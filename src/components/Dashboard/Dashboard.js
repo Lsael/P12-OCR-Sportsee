@@ -1,15 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Layout from '../Layout/Layout.js';
 import styles from './Dashboard.module.scss';
 
 const Dashboard = () => (
-  <div className={styles.Dashboard}>
-    Dashboard Component
-  </div>
+  <Layout>
+    <div className={styles.Dashboard}>
+      Dashboard Component
+    </div>
+  </Layout>
 );
-
-Dashboard.propTypes = {};
-
-Dashboard.defaultProps = {};
 
 export default Dashboard;

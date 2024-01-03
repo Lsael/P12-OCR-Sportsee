@@ -1,14 +1,10 @@
 import React from 'react';
 import styles from './App.module.scss';
-import TopNavBar from './components/TopNavBar/TopNavBar.js'
-import SideNavBar from './components/SideNavBar/SideNavBar.js'
-import Dashboard from './components/Dashboard/Dashboard.js'
+import { Outlet } from 'react-router-dom';
 
 const App = () => (
   <div className={styles.App}>
-    <TopNavBar />
-    <SideNavBar />
-    <Dashboard />
+    <Outlet />
   </div>
 );
 

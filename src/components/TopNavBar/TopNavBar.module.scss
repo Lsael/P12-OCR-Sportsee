@@ -1,1 +1,8 @@
-.TopNavBar {}
+.TopNavBar {
+    background-color: black;
+    nav {
+        display: flex;
+        justify-content: space-evenly;
+        color: white;
+    }
+}
