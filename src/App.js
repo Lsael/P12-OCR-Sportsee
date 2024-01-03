@@ -1,10 +1,10 @@
-import './App.css';
+import React from 'react';
+import styles from './App.module.scss';
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
-}
+const App = () => (
+  <div className={styles.App}>
+    App Component
+  </div>
+);
 
 export default App;
