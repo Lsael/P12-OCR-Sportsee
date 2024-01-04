@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+/* Fonts */
+$Roboto: 'Roboto', sans-serif;
+
 * {
     margin: 0;
     padding: 0;
     list-style: none;
     box-sizing: border-box;
+    font-family: $Roboto;
+}
+
+#root {
+    height: 100%;
+}
+
+body {
+    aspect-ratio: 1.40625;
 }
 
 a {
