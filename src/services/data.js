@@ -4,8 +4,7 @@ export default class UserDatas {
         this.id = id
     }
 
-    // fetching routes
-    async fetchUserInfos() {
+    async getUserInfos() {
         const datas = await fetch(`http://localhost:3000/user/${this.id}`)
         .then(res => res.json())
         .then(data => {
@@ -14,23 +13,33 @@ export default class UserDatas {
         return datas
     }
 
-    async fetchUserActivity() {
+    async getUserActivity() {
         const datas = await fetch(`http://localhost:3000/user/${this.id}/activity`)
-        return datas.json()
+        .then(res => res.json())
+        .then(data => {
+            return data.data.sessions
+        })
+        return datas
     }
 
-    async fetchUserAverageSessions() {
+    async getUserAverageSessions() {
         const datas = await fetch(`http://localhost:3000/user/${this.id}/average-sessions`)
-        return datas.json()
+        .then(res => res.json())
+        .then(data => {
+            return data.data.sessions
+        })
+        return datas
     }
 
-    async fetchUserPerformance() {
+    async getUserPerformance() {
         const datas = await fetch(`http://localhost:3000/user/${this.id}/performance`)
-        return datas.json()
-    }
-
-    // Formating Datas
-    getUsername() {
-        return this.fetchUserInfos().data.userInfos.firstName
+        .then(res => res.json())
+        .then(data => {
+            return {
+                kind: data.data.kind,
+                data: data.data.data
+            }
+        })
+        return datas
     }
 }
