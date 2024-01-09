@@ -1,1 +1,5 @@
-.Score {}
+@import '../../../../styles/variables.scss';
+
+.Score {
+    background-color: $light-grey-generic;
+}

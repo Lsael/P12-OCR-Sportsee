@@ -1,1 +1,10 @@
-.Title {}
+@import '../../../styles/variables.scss';
+
+.Title {
+    h2 {
+        font-size: 48px;
+        span {
+            color: $red-generic;
+        }
+    }
+}

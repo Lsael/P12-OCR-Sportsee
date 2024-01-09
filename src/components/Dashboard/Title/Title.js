@@ -7,10 +7,11 @@ const Title = () => {
   const userDatas = new UserDatas("12")
   userDatas.getUserInfos()
     .then(res => setFirstname(res.firstName))
-    
+
   return (
     <div className={styles.Title}>
-      <p>Bonjour, {firstName}</p>
+      <h2>Bonjour <span>{firstName}</span></h2>
+      <p>Félicitation ! Vous avez explosé vos objectifs hier</p>
     </div>
   );
 }

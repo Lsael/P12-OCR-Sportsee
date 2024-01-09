@@ -1,1 +1,6 @@
-.AverageSession {}
+@import '../../../../styles/variables.scss';
+
+.AverageSession {
+    background-color: $red-generic;
+    color: white;
+}

@@ -1,1 +1,6 @@
-.Intensity {}
+@import '../../../../styles/variables.scss';
+
+.Intensity {
+    background-color: $dark-grey-generic;
+    color: white;
+}

@@ -3,7 +3,7 @@ import styles from './Intensity.module.scss';
 
 const Intensity = () => (
   <div className={styles.Intensity}>
-    Intensity Component
+    Intensité
   </div>
 );
 

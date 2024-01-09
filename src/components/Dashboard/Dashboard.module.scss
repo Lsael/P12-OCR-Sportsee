@@ -1,2 +1,31 @@
+
 .Dashboard {
+    width: 100%;
+}
+    
+.main {
+    height: 100%;
+    padding: 60px 90px 90px 100px;
+}
+
+.graphs {
+    height:100%;
+    padding-top: 80px;
+    display: grid;
+    grid-template-rows: 4fr 3fr;
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas:
+    "daily-activity resume"
+    "details resume";
+}  
+
+.details {
+    grid-area: details;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div {
+        width: 30%;
+        aspect-ratio: 1;
+    }
 }

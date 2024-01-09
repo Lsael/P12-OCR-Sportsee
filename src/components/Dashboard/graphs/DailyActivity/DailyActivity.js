@@ -3,7 +3,7 @@ import styles from './DailyActivity.module.scss';
 
 const DailyActivity = () => (
   <div className={styles.DailyActivity}>
-    DailyActivity Component
+    Activité quotidienne
   </div>
 );
 

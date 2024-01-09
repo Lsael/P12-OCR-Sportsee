@@ -3,7 +3,7 @@ import styles from './Score.module.scss';
 
 const Score = () => (
   <div className={styles.Score}>
-    Score Component
+    Score
   </div>
 );
 

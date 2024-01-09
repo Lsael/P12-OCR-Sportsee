@@ -3,7 +3,7 @@ import styles from './AverageSession.module.scss';
 
 const AverageSession = () => (
   <div className={styles.AverageSession}>
-    AverageSession Component
+    Durée moyenne des sessions
   </div>
 );
 
