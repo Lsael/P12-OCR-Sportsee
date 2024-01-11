@@ -1,4 +1,4 @@
-
+/* 
 export default class UserDatas {
     constructor(id) {
         this.id = id
@@ -42,4 +42,51 @@ export default class UserDatas {
         })
         return datas
     }
+} */
+
+const getUserInfos = async(userId) => {
+    const datas = await fetch(`http://localhost:3000/user/${userId}`)
+    .then(res => res.json())
+    .then(data => {
+        return data.data.userInfos
+    })
+    return datas
 }
+
+const getUserActivity = async(userId) => {
+    const datas = await fetch(`http://localhost:3000/user/${userId}/activity`)
+    .then(res => res.json())
+    .then(data => {
+        return data.data.sessions
+    })
+    return datas
+}
+
+const getUserAverageSessions = async(userId) => {
+    const datas = await fetch(`http://localhost:3000/user/${userId}/average-sessions`)
+    .then(res => res.json())
+    .then(data => {
+        return data.data.sessions
+    })
+    return datas
+}
+
+const getUserPerformance = async(userId) => {
+    const datas = await fetch(`http://localhost:3000/user/${userId}/performance`)
+    .then(res => res.json())
+    .then(data => {
+        return {
+            kind: data.data.kind,
+            data: data.data.data
+        }
+    })
+    return datas
+}
+
+export {
+    getUserInfos,
+    getUserActivity,
+    getUserAverageSessions,
+    getUserPerformance
+}
+    
