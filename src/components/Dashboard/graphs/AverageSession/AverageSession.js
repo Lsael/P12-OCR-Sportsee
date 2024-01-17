@@ -1,25 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import styles from './AverageSession.module.scss';
+import { getUserAverageSessions } from '../../../../services/data.js'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const AverageSession = () => {
-  const [datesList, setDatesList] = useState([])
-  const [kilogramList, setKilogramList] = useState([])
-  const [caloriesList, setCaloriesList] = useState([])
+  const [graphDatas, setGraphDatas] = useState({})
   
   const buildDatas = (datas) => {
-    let dates = []
-    let kilogram = []
-    let calories = []
-    
-    datas.forEach(element => {
-      dates.push(element.day)
-      kilogram.push(element.kilogram)
-      calories.push(element.calories)
-    });
-    
-    setDatesList(dates)
-    setKilogramList(kilogram)
-    setCaloriesList(calories)
+    const builtDatas = datas.map((e) => {
+      return e.sessionLength
+    })
+    setGraphDatas(builtDatas)
   }
   
   const options = {
@@ -30,34 +41,31 @@ const AverageSession = () => {
       },
       title: {
         display: true,
-        text: 'Activité quotidienne',
+        text: 'Durée moyenne des sessions',
       },
     },
   };
   
+  const labels = ["L","M","M","J","V","S","D"]
+
   const data = {
-    labels:datesList,
+    labels:labels,
     datasets: [
       {
-        label: 'Poids (kg)',
-        data: kilogramList,
+        label: 'minutes',
+        data: graphDatas,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Calories brûlées (kCal)',
-        data: caloriesList,
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
+      }
     ],
   };
   
   useEffect(() => {
-/*     getUserActivity("12").then(res => buildDatas(res))  */
+    getUserAverageSessions("12").then(res => buildDatas(res)) 
   },[])
 
   return (
   <div className={styles.AverageSession}>
-    Durée moyenne des sessions
+    <Line options={options} data={data} />
   </div>
   )
 };
