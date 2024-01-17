@@ -56,27 +56,27 @@ const DailyActivity = () => {
   };
   
   const data = {
-    datesList,
+    labels:datesList,
     datasets: [
       {
         label: 'Poids (kg)',
-        data: datesList.map(() => kilogramList),
+        data: kilogramList,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Calories brûlées (kCal)',
-        data: datesList.map(() => caloriesList),
+        data: caloriesList,
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
   };
-
+  
   useEffect(() => {
-    getUserActivity("12").then(res => buildDatas(res))
+    getUserActivity("12").then(res => buildDatas(res)) 
   },[])
 
   return(
-  <div className={styles.DailyActivity}>
+  <div className={`${styles.DailyActivity} graph`}>
     <Bar options={options} data={data} />
   </div>
 )}
