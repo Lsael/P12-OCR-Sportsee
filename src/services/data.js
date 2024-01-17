@@ -14,6 +14,15 @@ const getUserInfos = (userId) => {
   return datas;
 };
 
+const getUserScore = (userId) => {
+  const datas = fetchUserInfos(userId)
+    .then((res) => res.json())
+    .then((data) => {
+      return data.data.todayScore;
+    });
+  return datas;
+};
+
 const getUserActivity = (userId) => {
   const datas = fetchUserActivity(userId)
     .then((res) => res.json())
@@ -46,6 +55,7 @@ const getUserPerformance = (userId) => {
 
 export {
   getUserInfos,
+  getUserScore,
   getUserActivity,
   getUserAverageSessions,
   getUserPerformance,

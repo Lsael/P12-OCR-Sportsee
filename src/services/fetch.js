@@ -16,7 +16,6 @@ const fetchUserAverageSessions = async(userId) => {
 
 const fetchUserPerformance = async(userId) => {
     const datas = await fetch(`http://localhost:3000/user/${userId}/performance`)
-    .then(res => res.json())
     return datas
 }
 
