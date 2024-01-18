@@ -22,62 +22,48 @@ ChartJS.register(
 );
 
 const Intensity = () => {
-  /* const [datesList, setDatesList] = useState([])
-  const [kilogramList, setKilogramList] = useState([])
-  const [caloriesList, setCaloriesList] = useState([])
+  const [kinds, setKinds] = useState([])
+  const [perfDatas, setPerfDatas] = useState([])
   
   const buildDatas = (datas) => {
-    let dates = []
-    let kilogram = []
-    let calories = []
-    
-    datas.forEach(element => {
-      dates.push(element.day)
-      kilogram.push(element.kilogram)
-      calories.push(element.calories)
-    });
-    
-    setDatesList(dates)
-    setKilogramList(kilogram)
-    setCaloriesList(calories)
+    console.log(datas)
+    let kinds = Object.keys(datas.kind).map((e) => {return datas.kind[e]})
+    let sortedPerfDatas = datas.data.sort((a,b) => a.kind - b.kind).map((e) => {return e.value})
+    console.log(sortedPerfDatas);
+    setKinds(kinds)
+    setPerfDatas(sortedPerfDatas)
   }
   
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        display: false,
       },
       title: {
         display: true,
-        text: 'Activité quotidienne',
+        text: 'Intensité',
       },
-    },
+    }
   };
   
   const data = {
-    labels:datesList,
+    labels:kinds,
     datasets: [
       {
-        label: 'Poids (kg)',
-        data: kilogramList,
+        data: perfDatas,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Calories brûlées (kCal)',
-        data: caloriesList,
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
+      }
     ],
   };
   
   useEffect(() => {
-    getUserPerformance("12").then(res => console.log(res)) 
-  },[]) */
+    getUserPerformance("12").then(res => buildDatas(res)) 
+  },[])
 
   return (
   <div className={styles.Intensity}>
-{/*     <Radar options={options} data={data} /> */}
+    <Radar options={options} data={data} />
   </div>
 );
 } 
