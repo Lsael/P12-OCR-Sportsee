@@ -26,10 +26,9 @@ const Intensity = () => {
   const [perfDatas, setPerfDatas] = useState([])
   
   const buildDatas = (datas) => {
-    console.log(datas)
     let kinds = Object.keys(datas.kind).map((e) => {return datas.kind[e]})
     let sortedPerfDatas = datas.data.sort((a,b) => a.kind - b.kind).map((e) => {return e.value})
-    console.log(sortedPerfDatas);
+
     setKinds(kinds)
     setPerfDatas(sortedPerfDatas)
   }

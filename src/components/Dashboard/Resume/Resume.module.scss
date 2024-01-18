@@ -1,4 +1,30 @@
+@import '../../../styles/variables.scss';
+
 .Resume {
     grid-area: resume;
     margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__Element {
+        display: flex;
+        align-items: center;
+        background-color: $light-grey-generic;
+        padding: 39px;
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__Icon {
+        height: 60px;
+        aspect-ratio: 1;
+    }
+    &__Data {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    &__Title {
+        font-size: 14px;
+    }
 }
