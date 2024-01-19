@@ -22,25 +22,7 @@ ChartJS.register(
 );
 
 const DailyActivity = () => {
-  const [datesList, setDatesList] = useState([])
-  const [kilogramList, setKilogramList] = useState([])
-  const [caloriesList, setCaloriesList] = useState([])
-  
-  const buildDatas = (datas) => {
-    let dates = []
-    let kilogram = []
-    let calories = []
-    
-    datas.forEach(element => {
-      dates.push(element.day)
-      kilogram.push(element.kilogram)
-      calories.push(element.calories)
-    });
-    
-    setDatesList(dates)
-    setKilogramList(kilogram)
-    setCaloriesList(calories)
-  }
+  const [graphDatas, setGraphDatas] = useState({})
   
   const options = {
     responsive: true,
@@ -56,23 +38,23 @@ const DailyActivity = () => {
   };
   
   const data = {
-    labels:datesList,
+    labels:graphDatas.dates,
     datasets: [
       {
         label: 'Poids (kg)',
-        data: kilogramList,
+        data: graphDatas.kilogram,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Calories brûlées (kCal)',
-        data: caloriesList,
+        data: graphDatas.calories,
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
   };
   
   useEffect(() => {
-    getUserActivity("12").then(res => buildDatas(res)) 
+    getUserActivity("12").then(res => setGraphDatas(res)) 
   },[])
 
   return(

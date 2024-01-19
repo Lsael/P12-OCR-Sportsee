@@ -22,16 +22,7 @@ ChartJS.register(
 );
 
 const Intensity = () => {
-  const [kinds, setKinds] = useState([])
-  const [perfDatas, setPerfDatas] = useState([])
-  
-  const buildDatas = (datas) => {
-    let kinds = Object.keys(datas.kind).map((e) => {return datas.kind[e]})
-    let sortedPerfDatas = datas.data.sort((a,b) => a.kind - b.kind).map((e) => {return e.value})
-
-    setKinds(kinds)
-    setPerfDatas(sortedPerfDatas)
-  }
+  const [graphDatas, setGraphDatas] = useState({})
   
   const options = {
     responsive: true,
@@ -47,17 +38,17 @@ const Intensity = () => {
   };
   
   const data = {
-    labels:kinds,
+    labels:graphDatas.kinds,
     datasets: [
       {
-        data: perfDatas,
+        data: graphDatas.datas,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
     ],
   };
   
   useEffect(() => {
-    getUserPerformance("12").then(res => buildDatas(res)) 
+    getUserPerformance("12").then(res => setGraphDatas(res)) 
   },[])
 
   return (

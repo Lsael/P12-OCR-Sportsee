@@ -36,6 +36,7 @@ const Score = () => {
   useEffect(() => {
     getUserScore("12").then((res) => setGraphDatas(res));
   }, []);
+  
   return (
     <div className={styles.Score}>
       <Doughnut options={options} data={data} />

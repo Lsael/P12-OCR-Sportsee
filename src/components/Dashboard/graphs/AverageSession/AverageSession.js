@@ -24,14 +24,7 @@ ChartJS.register(
 );
 
 const AverageSession = () => {
-  const [graphDatas, setGraphDatas] = useState({})
-  
-  const buildDatas = (datas) => {
-    const builtDatas = datas.map((e) => {
-      return e.sessionLength
-    })
-    setGraphDatas(builtDatas)
-  }
+  const [graphDatas, setGraphDatas] = useState()
   
   const options = {
     responsive: true,
@@ -60,9 +53,9 @@ const AverageSession = () => {
   };
   
   useEffect(() => {
-    getUserAverageSessions("12").then(res => buildDatas(res)) 
+    getUserAverageSessions("12").then(res => setGraphDatas(res))
   },[])
-
+  
   return (
   <div className={styles.AverageSession}>
     <Line options={options} data={data} />
