@@ -9,6 +9,7 @@ import Intensity from './graphs/Intensity/Intensity.js';
 import Score from './graphs/Score/Score.js';
 
 const Dashboard = () => {
+  // fetch les données ici et passer en props
 
   return(
   <Layout>

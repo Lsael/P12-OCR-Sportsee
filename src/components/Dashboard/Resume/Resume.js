@@ -39,7 +39,7 @@ const Resume = () => {
   return (
   <div className={styles.Resume}>
     {
-      Object.keys(userDatas).map((element, index) => {return (
+      Object.keys(userDatas).map((element, index) => (
         <div key={`resumeId${index}`} className={styles.Resume__Element}>
           <img src={titleInfos[index].icon} alt={titleInfos[index].title} className={styles.Resume__Icon}/>
           <div>
@@ -47,8 +47,7 @@ const Resume = () => {
             <span className={styles.Resume__Title}>{titleInfos[index].title}</span>
           </div>
         </div>
-      )
-    })
+      ))
     }
   </div>
 )};
