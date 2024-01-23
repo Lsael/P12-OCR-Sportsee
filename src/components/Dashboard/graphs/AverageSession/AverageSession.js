@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './AverageSession.module.scss';
-import { getUserAverageSessions } from '../../../../services/data.js'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,9 +22,8 @@ ChartJS.register(
   Legend
 );
 
-const AverageSession = () => {
-  const [graphDatas, setGraphDatas] = useState()
-  
+const AverageSession = (props) => {
+ 
   const options = {
     responsive: true,
     plugins: {
@@ -46,16 +44,12 @@ const AverageSession = () => {
     datasets: [
       {
         label: 'minutes',
-        data: graphDatas,
+        data: props.averageSession,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
     ],
   };
-  
-  useEffect(() => {
-    getUserAverageSessions("12").then(res => setGraphDatas(res))
-  },[])
-  
+
   return (
   <div className={styles.AverageSession}>
     <Line options={options} data={data} />

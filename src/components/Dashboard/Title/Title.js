@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
 import styles from './Title.module.scss';
-import { getUserInfos } from '../../../services/data.js'
 
-const Title = () => {
-  const [firstName, setFirstname] = useState("")
-  getUserInfos("12").then(res => setFirstname(res.firstName))
-
+const Title = (props) => {
   return (
     <div className={styles.Title}>
-      <h2>Bonjour <span>{firstName}</span></h2>
+      <h2>Bonjour <span>{props.firstName}</span></h2>
       <p>Félicitation ! Vous avez explosé vos objectifs hier</p>
     </div>
   );

@@ -1,6 +1,5 @@
 import styles from './DailyActivity.module.scss';
-import React, { useEffect, useState } from 'react';
-import { getUserActivity } from '../../../../services/data.js';
+import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,9 +20,8 @@ ChartJS.register(
   Legend
 );
 
-const DailyActivity = () => {
-  const [graphDatas, setGraphDatas] = useState({})
-  
+const DailyActivity = (props) => {
+
   const options = {
     responsive: true,
     plugins: {
@@ -38,24 +36,20 @@ const DailyActivity = () => {
   };
   
   const data = {
-    labels:graphDatas.dates,
+    labels:props.dailyActivity.dates,
     datasets: [
       {
         label: 'Poids (kg)',
-        data: graphDatas.kilogram,
+        data: props.dailyActivity.kilogram,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Calories brûlées (kCal)',
-        data: graphDatas.calories,
+        data: props.dailyActivity.calories,
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
   };
-  
-  useEffect(() => {
-    getUserActivity("12").then(res => setGraphDatas(res)) 
-  },[])
 
   return(
   <div className={`${styles.DailyActivity} graph`}>

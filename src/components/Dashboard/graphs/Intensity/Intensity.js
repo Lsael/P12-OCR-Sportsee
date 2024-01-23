@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Intensity.module.scss';
-import { getUserPerformance } from '../../../../services/data';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -21,9 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const Intensity = () => {
-  const [graphDatas, setGraphDatas] = useState({})
-  
+const Intensity = (props) => {
   const options = {
     responsive: true,
     plugins: {
@@ -38,18 +35,14 @@ const Intensity = () => {
   };
   
   const data = {
-    labels:graphDatas.kinds,
+    labels:props.intensity.kinds,
     datasets: [
       {
-        data: graphDatas.datas,
+        data: props.intensity.datas,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
     ],
   };
-  
-  useEffect(() => {
-    getUserPerformance("12").then(res => setGraphDatas(res)) 
-  },[])
 
   return (
   <div className={styles.Intensity}>
