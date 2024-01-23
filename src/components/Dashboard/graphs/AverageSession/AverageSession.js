@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './AverageSession.module.scss';
+import React from "react";
+import styles from "./AverageSession.module.scss";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,8 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -23,38 +23,75 @@ ChartJS.register(
 );
 
 const AverageSession = (props) => {
- 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        border: {
+          display: false
+        },
+        ticks: {
+          color: "#FFFFFF",
+        }
+      },
+      y: {
+        display: false,
+        min: -10
+      },
+    },
+    elements: {
+      point: {
+        backgroundColor: "#FFFFFF",
+        radius: 0,
+        hitRadius: 20,
+        hoverRadius: 5,
+      },
+      line: {
+        borderWidth: 1.5,
+        tension: 0.5,
+        borderColor: "#FFFFFF",
+        capBezierPoints: true,
+      }
+    },
     plugins: {
       legend: {
-        position: 'top',
+        display: false
       },
       title: {
         display: true,
-        text: 'Durée moyenne des sessions',
+        text: "Durée moyenne des sessions",
+        color: "#FFFFFF",
       },
-    },
+      tooltip: {
+        backgroundColor: "#FFFFFF",
+        titleColor: "black",
+        bodyColor: "black",
+        displayColors: false
+      }
+    }
   };
-  
-  const labels = ["L","M","M","J","V","S","D"]
+
+  const labels = ["L", "M", "M", "J", "V", "S", "D"];
 
   const data = {
-    labels:labels,
+    labels: labels,
     datasets: [
       {
-        label: 'minutes',
-        data: props.averageSession,
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      }
+        label: "minutes",
+        data: props.averageSession,   
+      },
     ],
   };
 
   return (
-  <div className={styles.AverageSession}>
-    <Line options={options} data={data} />
-  </div>
-  )
+    <div className={styles.AverageSession}>
+      <Line options={options} data={data} />
+    </div>
+  );
 };
 
 export default AverageSession;

@@ -3,4 +3,10 @@
 .AverageSession {
     background-color: $red-generic;
     color: white;
+    display: flex;
+    align-items: center;
+    aspect-ratio: 1;
+    height: 100%;
+    padding: 20px 0;
+    border-radius: 8px;
 }
