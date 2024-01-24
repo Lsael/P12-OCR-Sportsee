@@ -81,8 +81,8 @@ const AverageSession = (props) => {
     labels: labels,
     datasets: [
       {
-        label: "minutes",
-        data: props.averageSession,   
+        label: "min",
+        data: props.averageSession
       },
     ],
   };

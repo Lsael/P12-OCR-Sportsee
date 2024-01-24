@@ -1,5 +1,5 @@
-import styles from './DailyActivity.module.scss';
-import React from 'react';
+import styles from "./DailyActivity.module.scss";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,8 +8,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -21,40 +21,72 @@ ChartJS.register(
 );
 
 const DailyActivity = (props) => {
-
   const options = {
     responsive: true,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        border: {
+          display: false,
+        },
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+      y: {
+        position: 'right'
+      }
+    },
+    elements: {
+      bar: {
+        borderRadius: 6,
+      },
+    },
+    datasets: {
+      bar: {
+        barPercentage: 0.5,
+        categoryPercentage: 0.5,
+      },
+    },
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
+        align: "end",
+        labels: {
+          usePointStyle: true,
+        }
       },
       title: {
         display: true,
-        text: 'Activité quotidienne',
-      },
+        text: "Activité quotidienne",
+        align: "start",
+      }
     },
   };
-  
+
   const data = {
-    labels:props.dailyActivity.dates,
+    labels: props.dailyActivity.dates,
     datasets: [
       {
-        label: 'Poids (kg)',
+        label: "Poids (kg)",
         data: props.dailyActivity.kilogram,
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: "black",
       },
       {
-        label: 'Calories brûlées (kCal)',
+        label: "Calories brûlées (kCal)",
         data: props.dailyActivity.calories,
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        backgroundColor: "#FF0101",
       },
     ],
   };
 
-  return(
-  <div className={`${styles.DailyActivity} graph`}>
-    <Bar options={options} data={data} />
-  </div>
-)}
+  return (
+    <div className={`${styles.DailyActivity} graph`}>
+      <Bar options={options} data={data} />
+    </div>
+  );
+};
 
 export default DailyActivity;
