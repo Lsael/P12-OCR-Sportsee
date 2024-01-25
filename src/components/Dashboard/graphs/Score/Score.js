@@ -7,10 +7,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Score = (props) => {
   const options = {
+    cutout: 100,
     responsive: true,
     plugins: {
       legend: {
-        position: "center",
+        display: false
       },
       title: {
         display: true,
@@ -24,8 +25,8 @@ const Score = (props) => {
     datasets: [
       {
         label: "%",
-        data: [props.score, 1 - props.score],
-        backgroundColor: ["rgba(255, 99, 132, 0.5)", "#FBFBFB"],
+        data: [1 - props.score, props.score],
+        backgroundColor: ["#FBFBFB", "rgba(255, 1, 1)"],
       },
     ],
   };
@@ -33,6 +34,10 @@ const Score = (props) => {
   return (
     <div className={styles.Score}>
       <Doughnut options={options} data={data} />
+      <p className={styles.Score__count}>
+        <span className={styles.Score__percentage}>{`${props.score * 100} %`}</span>
+        <span className={styles.Score__span}>de votre objectif</span>
+      </p>
     </div>
   );
 };
