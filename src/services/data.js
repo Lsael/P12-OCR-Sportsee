@@ -70,7 +70,7 @@ const getUserPerformance = (userId) => {
   const datas = fetchUserPerformance(userId)
     .then((res) => res.json())
     .then((data) => {
-      let kinds = Object.keys(data.data.kind).map((e) => {return data.data.kind[e]})
+      let kinds = Object.keys(data.data.kind).map((e) => {return data.data.kind[e][0].toUpperCase() + data.data.kind[e].slice(1)})
       let sortedPerfDatas = data.data.data.sort((a,b) => a.kind - b.kind).map((e) => {return e.value})
       
       return {
