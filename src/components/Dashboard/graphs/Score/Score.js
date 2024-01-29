@@ -7,8 +7,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Score = (props) => {
   const options = {
-    cutout: 100,
+    cutout: "85%",
     responsive: true,
+    borderColor: "#FBFBFB",
     plugins: {
       legend: {
         display: false
@@ -16,8 +17,16 @@ const Score = (props) => {
       title: {
         display: true,
         text: "Score",
+        align: "start",
+        color: "black",
+        font: {
+          weight: "bold",
+          size: "18",
+        }
       },
     },
+    // disable Hover and Tooltips
+    events: []
   };
 
   const data = {
@@ -27,6 +36,7 @@ const Score = (props) => {
         label: "%",
         data: [1 - props.score, props.score],
         backgroundColor: ["#FBFBFB", "rgba(255, 1, 1)"],
+        borderRadius: 1000
       },
     ],
   };

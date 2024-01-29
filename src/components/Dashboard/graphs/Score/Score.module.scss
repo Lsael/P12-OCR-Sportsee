@@ -3,6 +3,7 @@
 .Score {
     background-color: $light-grey-generic;
     position: relative;
+    border-radius: 8px;
     &__count {
         position: absolute;
         top: 50%;
@@ -16,5 +17,8 @@
     }
     &__percentage {
         font-size: 36px;
+    }
+    canvas {
+        padding: 24px;
     }
 }

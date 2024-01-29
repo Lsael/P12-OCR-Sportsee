@@ -34,7 +34,10 @@ const Intensity = (props) => {
         },
         suggestedMin: 0,
         pointLabels: {
-          color: "white"
+          color: "white",
+          font: {
+            size: 12
+          }
         }
       }
     },
@@ -51,9 +54,10 @@ const Intensity = (props) => {
         display: false
       },
       title: {
-        display: true,
+        display: false
+/*         display: true,
         text: "Intensité",
-        color: "white"
+        color: "white" */
       },
     }
   };
