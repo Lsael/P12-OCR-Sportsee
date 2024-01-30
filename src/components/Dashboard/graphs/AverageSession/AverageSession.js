@@ -81,7 +81,7 @@ const AverageSession = (props) => {
         displayColors: false,
         callbacks: {
           title: () => {return null},
-          label: function (tooltipItems) {
+          label: (tooltipItems) => {
             return tooltipItems.formattedValue + " " + tooltipItems.dataset.label
         }
         }

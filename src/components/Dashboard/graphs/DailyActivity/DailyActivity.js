@@ -36,8 +36,8 @@ const DailyActivity = (props) => {
         },
       },
       y: {
-        position: 'right'
-      }
+        position: "right",
+      },
     },
     elements: {
       bar: {
@@ -49,7 +49,6 @@ const DailyActivity = (props) => {
         barPercentage: 0.5,
         categoryPercentage: 0.5,
       },
-      
     },
     plugins: {
       legend: {
@@ -57,14 +56,30 @@ const DailyActivity = (props) => {
         align: "end",
         labels: {
           usePointStyle: true,
-        }
+        },
       },
       title: {
         display: true,
         text: "Activité quotidienne",
         align: "start",
-      }
-    }
+      },
+      tooltip: {
+        callbacks: {
+          title: () => {
+            return null;
+          },
+          label: (tooltipItems) => {
+            return (
+              tooltipItems.formattedValue + " " + tooltipItems.dataset.label
+            );
+          },
+        },
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        }
+      },
+    },
   };
 
   const data = {
