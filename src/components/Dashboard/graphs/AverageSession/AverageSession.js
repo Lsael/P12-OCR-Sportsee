@@ -64,13 +64,27 @@ const AverageSession = (props) => {
       title: {
         display: true,
         text: "Durée moyenne des sessions",
-        color: "#FFFFFF",
+        color: "rgb(255, 255, 255, 0.5)",
+        font: {
+          size: 15
+        } 
       },
       tooltip: {
         backgroundColor: "#FFFFFF",
         titleColor: "black",
         bodyColor: "black",
-        displayColors: false
+        bodyFont: {
+          weight: "bold"
+        },
+        padding: 10,
+        cornerRadius:0,
+        displayColors: false,
+        callbacks: {
+          title: () => {return null},
+          label: function (tooltipItems) {
+            return tooltipItems.formattedValue + " " + tooltipItems.dataset.label
+        }
+        }
       }
     }
   };
@@ -82,9 +96,9 @@ const AverageSession = (props) => {
     datasets: [
       {
         label: "min",
-        data: props.averageSession
+        data: props.averageSession,
       },
-    ],
+    ]
   };
 
   return (

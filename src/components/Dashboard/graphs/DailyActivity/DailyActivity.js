@@ -49,6 +49,7 @@ const DailyActivity = (props) => {
         barPercentage: 0.5,
         categoryPercentage: 0.5,
       },
+      
     },
     plugins: {
       legend: {
@@ -63,7 +64,7 @@ const DailyActivity = (props) => {
         text: "Activité quotidienne",
         align: "start",
       }
-    },
+    }
   };
 
   const data = {
