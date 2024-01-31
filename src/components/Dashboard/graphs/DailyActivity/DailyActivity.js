@@ -64,20 +64,32 @@ const DailyActivity = (props) => {
         align: "start",
       },
       tooltip: {
+        position: "nearest",
+        backgroundColor: "#E60000",
+        bodyColor: "white",
+        padding: 12,
+        cornerRadius: 0,
+        displayColors: false,
+        bodyAlign: "center",
+        bodySpacing: 32,
+        xAlign: "left",
+        yAlign: "bottom",
+        caretSize: 0,
+        caretPadding: 16,
         callbacks: {
           title: () => {
             return null;
           },
           label: (tooltipItems) => {
             return (
-              tooltipItems.formattedValue + " " + tooltipItems.dataset.label
+            tooltipItems.formattedValue + tooltipItems.dataset.label.split("(")[1].split(")")[0]
             );
           },
         },
         interaction: {
           mode: 'index',
           intersect: false,
-        }
+        },
       },
     },
   };

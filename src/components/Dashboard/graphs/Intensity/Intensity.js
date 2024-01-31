@@ -26,7 +26,7 @@ const Intensity = (props) => {
     scales: {
       r: {
         grid: {
-          color: "white"
+          color: "white",
         },
         ticks: {
           display: false,
@@ -36,10 +36,10 @@ const Intensity = (props) => {
         pointLabels: {
           color: "white",
           font: {
-            size: 12
-          }
-        }
-      }
+            size: 12,
+          },
+        },
+      },
     },
     elements: {
       point: {
@@ -51,17 +51,30 @@ const Intensity = (props) => {
     },
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
       title: {
-        display: false
-/*         display: true,
-        text: "Intensité",
-        color: "white" */
+        display: false,
       },
-    }
+      tooltip: {
+        backgroundColor: "#FFFFFF",
+        titleColor: "black",
+        bodyColor: "black",
+        bodyFont: {
+          weight: "bold",
+        },
+        padding: 10,
+        cornerRadius: 0,
+        displayColors: false,
+        callbacks: {
+          title: () => {
+            return null;
+          },
+        },
+      },
+    },
   };
-  
+
   const data = {
     labels: props.intensity.kinds,
     datasets: [
