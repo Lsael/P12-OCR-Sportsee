@@ -36,22 +36,24 @@ const getUserActivity = (userId) => {
   const datas = fetchUserActivity(userId)
     .then((res) => res.json())
     .then((data) => {
-      let dates = []
-      let kilogram = []
-      let calories = []
-      
-      data.data.sessions.forEach(element => {
-          dates.push(element.day)
-          kilogram.push(element.kilogram)
-          calories.push(element.calories)
+      let dates = [];
+      let kilogram = [];
+      let calories = [];
+
+      data.data.sessions.forEach((element) => {
+        const day = new Date(element.day).getDate();
+
+        dates.push(day);
+        kilogram.push(element.kilogram);
+        calories.push(element.calories);
       });
 
       return {
         dates: dates,
         kilogram: kilogram,
-        calories: calories
-      }
-      });
+        calories: calories,
+      };
+    });
   return datas;
 };
 
@@ -60,8 +62,8 @@ const getUserAverageSessions = (userId) => {
     .then((res) => res.json())
     .then((data) => {
       return data.data.sessions.map((e) => {
-        return e.sessionLength
-      })
+        return e.sessionLength;
+      });
     });
   return datas;
 };
@@ -70,12 +72,18 @@ const getUserPerformance = (userId) => {
   const datas = fetchUserPerformance(userId)
     .then((res) => res.json())
     .then((data) => {
-      let kinds = Object.keys(data.data.kind).map((e) => {return data.data.kind[e][0].toUpperCase() + data.data.kind[e].slice(1)})
-      let sortedPerfDatas = data.data.data.sort((a,b) => a.kind - b.kind).map((e) => {return e.value})
-      
+      let kinds = Object.keys(data.data.kind).map((e) => {
+        return data.data.kind[e][0].toUpperCase() + data.data.kind[e].slice(1);
+      });
+      let sortedPerfDatas = data.data.data
+        .sort((a, b) => a.kind - b.kind)
+        .map((e) => {
+          return e.value;
+        });
+
       return {
         kinds: kinds,
-        datas: sortedPerfDatas
+        datas: sortedPerfDatas,
       };
     });
   return datas;

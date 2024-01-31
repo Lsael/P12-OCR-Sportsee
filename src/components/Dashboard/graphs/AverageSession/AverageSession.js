@@ -47,7 +47,7 @@ const AverageSession = (props) => {
       point: {
         backgroundColor: "#FFFFFF",
         radius: 0,
-        hitRadius: 20,
+        hitRadius: 50,
         hoverRadius: 5,
       },
       line: {
