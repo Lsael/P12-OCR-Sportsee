@@ -33,10 +33,14 @@ const DailyActivity = (props) => {
         },
         ticks: {
           beginAtZero: true,
+          padding: 16,
         },
       },
       y: {
         position: "right",
+        ticks: {
+          padding: 16,
+        },
       },
     },
     elements: {
@@ -52,16 +56,10 @@ const DailyActivity = (props) => {
     },
     plugins: {
       legend: {
-        position: "top",
-        align: "end",
-        labels: {
-          usePointStyle: true,
-        },
+        display: false
       },
       title: {
-        display: true,
-        text: "Activité quotidienne",
-        align: "start",
+        display: false,
       },
       tooltip: {
         position: "nearest",
@@ -82,12 +80,13 @@ const DailyActivity = (props) => {
           },
           label: (tooltipItems) => {
             return (
-            tooltipItems.formattedValue + tooltipItems.dataset.label.split("(")[1].split(")")[0]
+              tooltipItems.formattedValue +
+              tooltipItems.dataset.label
             );
           },
         },
         interaction: {
-          mode: 'index',
+          mode: "index",
           intersect: false,
         },
       },
@@ -98,12 +97,12 @@ const DailyActivity = (props) => {
     labels: props.dailyActivity.dates,
     datasets: [
       {
-        label: "Poids (kg)",
+        label: "kg",
         data: props.dailyActivity.kilogram,
         backgroundColor: "black",
       },
       {
-        label: "Calories brûlées (kCal)",
+        label: "kCal",
         data: props.dailyActivity.calories,
         backgroundColor: "#FF0101",
       },
@@ -112,6 +111,19 @@ const DailyActivity = (props) => {
 
   return (
     <div className={`${styles.DailyActivity} graph`}>
+      <p className={styles.DailyActivity__head}>
+        <h2>Activité quotidienne</h2>
+        <p className={styles.DailyActivity__legend}>
+          <p className={styles.weight}>
+            <span>&#9679;</span>
+            <span>Poids (kg)</span>
+          </p>
+          <p className={styles.calories}>
+            <span>&#9679;</span>
+            <span>Calories brûlées (kCal)</span>
+          </p>
+        </p>
+      </p>
       <Bar options={options} data={data} />
     </div>
   );
