@@ -82,32 +82,32 @@ const DailyActivity = (props) => {
             return (
               tooltipItems.formattedValue +
               tooltipItems.dataset.label
-            );
+              );
+            },
+          },
+          interaction: {
+            mode: "index",
+            intersect: false,
           },
         },
-        interaction: {
-          mode: "index",
-          intersect: false,
+      },
+    };
+    
+    const data = {
+      labels: props.dailyActivity.dates,
+      datasets: [
+        {
+          label: "kg",
+          data: props.dailyActivity.kilogram,
+          backgroundColor: "black",
         },
-      },
-    },
-  };
-
-  const data = {
-    labels: props.dailyActivity.dates,
-    datasets: [
-      {
-        label: "kg",
-        data: props.dailyActivity.kilogram,
-        backgroundColor: "black",
-      },
-      {
-        label: "kCal",
-        data: props.dailyActivity.calories,
-        backgroundColor: "#FF0101",
-      },
-    ],
-  };
+        {
+          label: "kCal",
+          data: props.dailyActivity.calories,
+          backgroundColor: "#FF0101",
+        },
+      ],
+    };
 
   return (
     <div className={`${styles.DailyActivity} graph`}>
