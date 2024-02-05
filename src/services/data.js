@@ -36,25 +36,22 @@ const getUserActivity = (userId) => {
   const datas = fetchUserActivity(userId)
     .then((res) => res.json())
     .then((data) => {
-      let dates = [];
-      let kilogram = [];
-      let calories = [];
+      let formattedDatas = [];
 
       data.data.sessions.forEach((element) => {
         const day = new Date(element.day).getDate();
 
-        dates.push(day);
-        kilogram.push(element.kilogram);
-        calories.push(element.calories);
+        formattedDatas.push({
+          name: day,
+          calories: element.calories,
+          kilogram: element.kilogram,
+        });
       });
 
-      return {
-        dates: dates,
-        kilogram: kilogram,
-        calories: calories,
-      };
+      return formattedDatas;
     });
-  return datas;
+    console.log(datas);
+    return datas;
 };
 
 const getUserAverageSessions = (userId) => {

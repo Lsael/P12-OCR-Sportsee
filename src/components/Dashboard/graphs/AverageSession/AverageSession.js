@@ -4,9 +4,8 @@ import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 
 const AverageSession = (props) => {
   const labels = ["L", "M", "M", "J", "V", "S", "D"];
-  const session = props.averageSession;
   
-  const data = session.map((e, index) => {
+  const data = props.averageSession.map((e, index) => {
     return({
       name: labels[index],
       sessionData: e
