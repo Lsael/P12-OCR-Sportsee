@@ -111,9 +111,9 @@ const DailyActivity = (props) => {
 
   return (
     <div className={`${styles.DailyActivity} graph`}>
-      <p className={styles.DailyActivity__head}>
+      <div className={styles.DailyActivity__head}>
         <h2>Activité quotidienne</h2>
-        <p className={styles.DailyActivity__legend}>
+        <div className={styles.DailyActivity__legend}>
           <p className={styles.weight}>
             <span>&#9679;</span>
             <span>Poids (kg)</span>
@@ -122,8 +122,8 @@ const DailyActivity = (props) => {
             <span>&#9679;</span>
             <span>Calories brûlées (kCal)</span>
           </p>
-        </p>
-      </p>
+        </div>
+      </div>
       <Bar options={options} data={data} />
     </div>
   );

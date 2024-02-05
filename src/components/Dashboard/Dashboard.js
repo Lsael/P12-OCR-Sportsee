@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   const [firstName, setFirstname] = useState("");
   const [dailyActivity, setDailyActivity] = useState({});
-  const [averageSession, setAverageSession] = useState({});
+  const [averageSession, setAverageSession] = useState([]);
   const [intensity, setIntensity] = useState({});
   const [score, setScore] = useState({});
   const [resume, setResume] = useState({});
@@ -31,7 +31,7 @@ const Dashboard = () => {
     getUserActivity(userId).then((res) => setDailyActivity(res));
     getUserAverageSessions(userId).then((res) => setAverageSession(res));
     getUserPerformance(userId).then((res) => setIntensity(res));
-    getUserScore("12").then((res) => setScore(res));
+    getUserScore(userId).then((res) => setScore(res));
     getUserResume(userId).then((res) => setResume(res));
   }, []);
 

@@ -1,109 +1,30 @@
 import React from "react";
 import styles from "./AverageSession.module.scss";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 
 const AverageSession = (props) => {
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-        border: {
-          display: false
-        },
-        ticks: {
-          color: "#FFFFFF",
-        }
-      },
-      y: {
-        display: false,
-        min: -10
-      },
-    },
-    elements: {
-      point: {
-        backgroundColor: "#FFFFFF",
-        radius: 0,
-        hitRadius: 50,
-        hoverRadius: 5,
-      },
-      line: {
-        borderWidth: 1.5,
-        tension: 0.5,
-        borderColor: "#FFFFFF",
-        capBezierPoints: true,
-      }
-    },
-    plugins: {
-      legend: {
-        display: false
-      },
-      title: {
-        display: true,
-        text: "Durée moyenne des sessions",
-        color: "rgb(255, 255, 255, 0.5)",
-        font: {
-          size: 15
-        } 
-      },
-      tooltip: {
-        backgroundColor: "#FFFFFF",
-        titleColor: "black",
-        bodyColor: "black",
-        bodyFont: {
-          weight: "bold"
-        },
-        padding: 10,
-        cornerRadius:0,
-        displayColors: false,
-        callbacks: {
-          title: () => {return null},
-          label: (tooltipItems) => {
-            return tooltipItems.formattedValue + " " + tooltipItems.dataset.label
-        }
-        }
-      }
-    }
-  };
-
   const labels = ["L", "M", "M", "J", "V", "S", "D"];
-
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: "min",
-        data: props.averageSession,
-      },
-    ]
-  };
+  const session = props.averageSession;
+  
+  const data = session.map((e, index) => {
+    return({
+      name: labels[index],
+      sessionData: e
+    })
+  })
 
   return (
     <div className={styles.AverageSession}>
-      <Line options={options} data={data} />
+      <LineChart
+        width={250}
+        height={300}
+        data={data}
+        margin={{ top: 5, right: 0, left: 0, bottom: 5 }}>
+        <XAxis dataKey="name" />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="sessionData" stroke="white" />
+      </LineChart>
     </div>
   );
 };
