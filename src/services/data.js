@@ -50,7 +50,6 @@ const getUserActivity = (userId) => {
 
       return formattedDatas;
     });
-    console.log(datas);
     return datas;
 };
 
@@ -72,16 +71,16 @@ const getUserPerformance = (userId) => {
       let kinds = Object.keys(data.data.kind).map((e) => {
         return data.data.kind[e][0].toUpperCase() + data.data.kind[e].slice(1);
       });
+
       let sortedPerfDatas = data.data.data
-        .sort((a, b) => a.kind - b.kind)
         .map((e) => {
-          return e.value;
+          return {
+            kind: kinds[e.kind - 1],
+            value: e.value
+          };
         });
 
-      return {
-        kinds: kinds,
-        datas: sortedPerfDatas,
-      };
+      return sortedPerfDatas
     });
   return datas;
 };

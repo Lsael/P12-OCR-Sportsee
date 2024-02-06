@@ -13,7 +13,7 @@ const Score = (props) => {
   }]
   return (
     <div className={styles.Score}>
-      <PieChart width={730} height={250}>
+      <PieChart width={300} height={250}>
         <Pie
           data={data}
           nameKey="name"
