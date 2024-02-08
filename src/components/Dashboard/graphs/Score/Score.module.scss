@@ -4,6 +4,12 @@
     background-color: $light-grey-generic;
     position: relative;
     border-radius: 8px;
+    &__title {
+        position: absolute;
+        top: 24px;
+        left: 30px;
+        font-size: 15;
+    }
     &__count {
         position: absolute;
         top: 50%;

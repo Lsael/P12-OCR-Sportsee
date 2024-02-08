@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Score.module.scss";
-import { Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 const Score = (props) => {
   const data = [
@@ -14,8 +14,11 @@ const Score = (props) => {
     },
   ];
   
+  const COLORS = ['rgba(255, 1, 1)', 'white'];
+
   return (
     <div className={styles.Score}>
+      <h3 className={styles.Score__title}>Score</h3>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={300} height={250}>
           <Pie
@@ -24,9 +27,14 @@ const Score = (props) => {
             dataKey="score"
             cx="50%"
             cy="50%"
-            outerRadius={50}
+            outerRadius={85}
+            innerRadius={70}
             fill="rgba(255, 1, 1)"
-          />
+            >
+            {
+              data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+            }
+            </Pie>
         </PieChart>
         <p className={styles.Score__count}>
           <span className={styles.Score__percentage}>{`${
