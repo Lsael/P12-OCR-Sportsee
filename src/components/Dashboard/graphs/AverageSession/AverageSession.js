@@ -7,7 +7,6 @@ import {
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis,
 } from "recharts";
 
 const CustomLegend = () => {
@@ -42,7 +41,9 @@ const AverageSession = (props) => {
           margin={{ top: 30, right: 0, left: 0, bottom: 50 }}
           onMouseMove={(e) => {
             console.log(e);
-              document.querySelector(`.${styles.AverageSession__customHover}`).style.left = e.chartX
+            if(e.isTooltipActive) {
+              document.querySelector(`.${styles.AverageSession__customHover}`).style.left = e.activeCoordinate.x +"px"
+              }
             }
           }
         >
