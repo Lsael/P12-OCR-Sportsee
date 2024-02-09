@@ -30,9 +30,11 @@ const Score = (props) => {
             outerRadius={85}
             innerRadius={70}
             fill="rgba(255, 1, 1)"
+            cornerRadius={50}
+            startAngle={-270}
             >
             {
-              data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+              data.map((value, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
             }
             </Pie>
         </PieChart>

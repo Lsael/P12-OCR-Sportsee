@@ -16,8 +16,8 @@ const CustomLegend = () => {
 const CustomTicks = ({ labels }) => {
   return (
     <p className={styles.AverageSession__customTicks}>
-      {labels.map((e) => {
-        return <span>{e}</span>;
+      {labels.map((e, index) => {
+        return <span key={e + index} >{e}</span>;
       })}
     </p>
   );
