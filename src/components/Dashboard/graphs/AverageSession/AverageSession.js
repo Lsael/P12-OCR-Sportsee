@@ -17,7 +17,7 @@ const CustomTicks = ({ labels }) => {
   return (
     <p className={styles.AverageSession__customTicks}>
       {labels.map((e, index) => {
-        return <span key={e + index} >{e}</span>;
+        return <span key={e + index}>{e}</span>;
       })}
     </p>
   );
@@ -39,21 +39,26 @@ const AverageSession = (props) => {
         <LineChart
           data={data}
           margin={{ top: 30, right: 0, left: 0, bottom: 50 }}
-          onMouseMove={(e) => {
-            console.log(e);
-            if(e.isTooltipActive) {
-              document.querySelector(`.${styles.AverageSession__customHover}`).style.left = e.activeCoordinate.x +"px"
-              }
-            }
-          }
         >
           <XAxis dataKey="name" hide={true} />
           <Tooltip
-            contentStyle={{width: "fit-content"}}
+            wrapperStyle={{
+              background: "rgba(0, 0, 0, 0.2)",
+              height: "200%",
+              width: "100%",
+              position: 'absolute',
+              left: "-10px",
+              top: "-100%",
+              transform: "translate(-50%)",
+              display: "flex",
+              alignItems: "center"
+            }}
+            contentStyle={{ width: "fit-content", marginLeft: "10px" }}
             itemStyle={{ color: "black" }}
-            allowEscapeViewBox={{ x: true, y: true }}
-            labelStyle={{display: "none"}}
-            formatter={(value, name) => [value]}
+            allowEscapeViewBox={{ x: true, y: false }}
+            labelStyle={{ display: "none" }}
+            formatter={(value, name, unit) => [value + " min"]}
+            cursor={{ stroke: 'false' }}
           />
           <Legend
             verticalAlign="top"
