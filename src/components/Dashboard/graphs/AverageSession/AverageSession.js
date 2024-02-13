@@ -46,10 +46,8 @@ const AverageSession = (props) => {
               background: "rgba(0, 0, 0, 0.2)",
               height: "200%",
               width: "100%",
-              position: 'absolute',
               left: "-10px",
               top: "-100%",
-              transform: "translate(-50%)",
               display: "flex",
               alignItems: "center"
             }}
@@ -57,7 +55,7 @@ const AverageSession = (props) => {
             itemStyle={{ color: "black" }}
             allowEscapeViewBox={{ x: true, y: false }}
             labelStyle={{ display: "none" }}
-            formatter={(value, name, unit) => [value + " min"]}
+            formatter={(value, name) => [value + " min"]}
             cursor={{ stroke: 'false' }}
           />
           <Legend

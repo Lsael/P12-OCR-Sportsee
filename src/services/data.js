@@ -10,7 +10,9 @@ const getUserInfos = (userId) => {
     .then((res) => res.json())
     .then((data) => {
       return data.data.userInfos;
-    });
+    })
+    .catch(error => console.error(error));
+    
   return datas;
 };
 
@@ -19,7 +21,9 @@ const getUserScore = (userId) => {
     .then((res) => res.json())
     .then((data) => {
       return data.data.todayScore;
-    });
+    })
+    .catch(error => console.error(error));
+
   return datas;
 };
 
@@ -28,7 +32,9 @@ const getUserResume = (userId) => {
     .then((res) => res.json())
     .then((data) => {
       return data.data.keyData;
-    });
+    })
+    .catch(error => console.error(error));
+
   return datas;
 };
 
@@ -49,7 +55,9 @@ const getUserActivity = (userId) => {
       });
 
       return formattedDatas;
-    });
+    })
+    .catch(error => console.error(error));
+
     return datas;
 };
 
@@ -60,7 +68,9 @@ const getUserAverageSessions = (userId) => {
       return data.data.sessions.map((e) => {
         return e.sessionLength;
       });
-    });
+    })
+    .catch(error => console.error(error));
+
   return datas;
 };
 
@@ -81,7 +91,9 @@ const getUserPerformance = (userId) => {
         });
 
       return sortedPerfDatas
-    });
+    })
+    .catch(error => console.error(error));
+
   return datas;
 };
 
