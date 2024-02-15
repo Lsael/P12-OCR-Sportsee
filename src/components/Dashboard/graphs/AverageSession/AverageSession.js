@@ -4,6 +4,7 @@ import {
   Legend,
   Line,
   LineChart,
+  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -22,6 +23,30 @@ const CustomTicks = ({ labels }) => {
     </p>
   );
 };
+
+const CustomCursor = (props) => {
+  const {
+    pointerEvents, points, className,
+  } = props;
+
+  const { x, y } = points[0];
+  return (
+    <>
+      <Rectangle
+        x={x}
+        y={y - 1000}
+        stroke={false}
+        pointerEvents={pointerEvents}
+        width={2000}
+        height={2000}
+        points={points}
+        className={className}
+        type="linear"
+        fill="rgba(0, 0, 0, 0.2)"
+      />
+    </>
+  );
+}
 
 const AverageSession = (props) => {
   const labels = ["L", "M", "M", "J", "V", "S", "D"];
@@ -42,21 +67,11 @@ const AverageSession = (props) => {
         >
           <XAxis dataKey="name" hide={true} />
           <Tooltip
-            wrapperStyle={{
-              background: "rgba(0, 0, 0, 0.2)",
-              height: "200%",
-              width: "100%",
-              left: "-10px",
-              top: "-100%",
-              display: "flex",
-              alignItems: "center"
-            }}
-            contentStyle={{ width: "fit-content", marginLeft: "10px" }}
+            contentStyle={{ width: "max-content", aspectRatio: "auto" }}
             itemStyle={{ color: "black" }}
-            allowEscapeViewBox={{ x: true, y: false }}
             labelStyle={{ display: "none" }}
-            formatter={(value, name) => [value + " min"]}
-            cursor={{ stroke: 'false' }}
+            formatter={(value) => [value]}
+            cursor={<CustomCursor />}
           />
           <Legend
             verticalAlign="top"
@@ -69,6 +84,7 @@ const AverageSession = (props) => {
             dataKey="sessionData"
             stroke="white"
             dot={false}
+            unit=" min"
           />
         </LineChart>
       </ResponsiveContainer>
