@@ -54,13 +54,20 @@ const AverageSession = (props) => {
           data={data}
           margin={{ top: 30, right: 0, left: 0, bottom: 30 }}
         >
+          <defs>
+            <linearGradient id="AverageSessionGradient" x1="0%" y1="0" x2="100%" y2="0">
+              <stop offset="0%" stopColor="#fcfcfc" stopOpacity={0.3}/>
+              <stop offset="50%" stopColor="#fcfcfc" stopOpacity={0.7}/>
+              <stop offset="95%" stopColor="#fcfcfc" stopOpacity={1}/>
+            </linearGradient>
+          </defs>
           <XAxis
             dataKey="name"
             axisLine={false}
             tickLine={false}
             tickMargin={20}
             tick={{ fill: "white" }}
-            padding={{right:5, left:5}}
+            padding={{ right: 5, left: 5 }}
           />
           <Tooltip
             contentStyle={{ width: "max-content", aspectRatio: "auto" }}
@@ -78,13 +85,13 @@ const AverageSession = (props) => {
           <Line
             type="natural"
             dataKey="sessionData"
-            stroke="white"
+            strokeWidth={2}
+            stroke="url(#AverageSessionGradient)" 
             dot={false}
             unit=" min"
           />
         </LineChart>
       </ResponsiveContainer>
-      {/*       <CustomTicks labels={labels} /> */}
     </div>
   );
 };
