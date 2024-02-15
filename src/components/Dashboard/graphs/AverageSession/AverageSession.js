@@ -8,26 +8,15 @@ import {
   ResponsiveContainer,
   Tooltip,
   XAxis,
+  YAxis,
 } from "recharts";
 
 const CustomLegend = () => {
   return <h3>Durée moyenne des sessions</h3>;
 };
 
-const CustomTicks = ({ labels }) => {
-  return (
-    <p className={styles.AverageSession__customTicks}>
-      {labels.map((e, index) => {
-        return <span key={e + index}>{e}</span>;
-      })}
-    </p>
-  );
-};
-
 const CustomCursor = (props) => {
-  const {
-    pointerEvents, points, className,
-  } = props;
+  const { pointerEvents, points, className } = props;
 
   const { x, y } = points[0];
   return (
@@ -46,7 +35,7 @@ const CustomCursor = (props) => {
       />
     </>
   );
-}
+};
 
 const AverageSession = (props) => {
   const labels = ["L", "M", "M", "J", "V", "S", "D"];
@@ -63,9 +52,16 @@ const AverageSession = (props) => {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 30, right: 0, left: 0, bottom: 50 }}
+          margin={{ top: 30, right: 0, left: 0, bottom: 30 }}
         >
-          <XAxis dataKey="name" hide={true} />
+          <XAxis
+            dataKey="name"
+            axisLine={false}
+            tickLine={false}
+            tickMargin={20}
+            tick={{ fill: "white" }}
+            padding={{right:5, left:5}}
+          />
           <Tooltip
             contentStyle={{ width: "max-content", aspectRatio: "auto" }}
             itemStyle={{ color: "black" }}
@@ -88,8 +84,7 @@ const AverageSession = (props) => {
           />
         </LineChart>
       </ResponsiveContainer>
-      <CustomTicks labels={labels} />
-      <p className={styles.AverageSession__customHover}></p>
+      {/*       <CustomTicks labels={labels} /> */}
     </div>
   );
 };
