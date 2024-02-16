@@ -46,8 +46,8 @@ const Score = (props) => {
             dataKey="score"
             cx="50%"
             cy="50%"
-            outerRadius={85}
-            innerRadius={70}
+            outerRadius={80}
+            innerRadius={65}
             cornerRadius={50}
             startAngle={-270}
             stroke="#FBFBFB"
@@ -56,7 +56,7 @@ const Score = (props) => {
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Pie data={placeholder} dataKey="value" cx="50%" cy="50%" outerRadius={70} fill="white" />
+          <Pie data={placeholder} dataKey="value" cx="50%" cy="50%" outerRadius={65} fill="white" />
         </PieChart>
         <p className={styles.Score__count}>
           <span className={styles.Score__percentage}>{`${
