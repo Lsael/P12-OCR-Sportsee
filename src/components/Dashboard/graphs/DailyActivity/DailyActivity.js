@@ -10,6 +10,7 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
+import { handleError } from "../../../../services/data";
 
 const CustomLegend = () => {
   return (
@@ -30,6 +31,9 @@ const CustomLegend = () => {
 };
 
 const DailyActivity = (props) => {
+  if (props.dailyActivity.error) {
+    return handleError();
+  }
   const data = props.dailyActivity;
 
   return (

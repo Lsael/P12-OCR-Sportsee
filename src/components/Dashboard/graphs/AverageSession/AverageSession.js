@@ -10,6 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { handleError } from "../../../../services/data";
 
 const CustomLegend = () => {
   return <h3>Durée moyenne des sessions</h3>;
@@ -38,6 +39,10 @@ const CustomCursor = (props) => {
 };
 
 const AverageSession = (props) => {
+  if (props.averageSession.error) {
+    return handleError();
+  }
+
   const labels = ["L", "M", "M", "J", "V", "S", "D"];
 
   const data = props.averageSession.map((e, index) => {
@@ -55,10 +60,16 @@ const AverageSession = (props) => {
           margin={{ top: 30, right: 0, left: 0, bottom: 30 }}
         >
           <defs>
-            <linearGradient id="AverageSessionGradient" x1="0%" y1="0" x2="100%" y2="0">
-              <stop offset="0%" stopColor="#fcfcfc" stopOpacity={0.3}/>
-              <stop offset="50%" stopColor="#fcfcfc" stopOpacity={0.7}/>
-              <stop offset="95%" stopColor="#fcfcfc" stopOpacity={1}/>
+            <linearGradient
+              id="AverageSessionGradient"
+              x1="0%"
+              y1="0"
+              x2="100%"
+              y2="0"
+            >
+              <stop offset="0%" stopColor="#fcfcfc" stopOpacity={0.3} />
+              <stop offset="50%" stopColor="#fcfcfc" stopOpacity={0.7} />
+              <stop offset="95%" stopColor="#fcfcfc" stopOpacity={1} />
             </linearGradient>
           </defs>
           <XAxis
@@ -86,7 +97,7 @@ const AverageSession = (props) => {
             type="natural"
             dataKey="sessionData"
             strokeWidth={2}
-            stroke="url(#AverageSessionGradient)" 
+            stroke="url(#AverageSessionGradient)"
             dot={false}
             unit=" min"
           />

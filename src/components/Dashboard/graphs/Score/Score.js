@@ -1,20 +1,13 @@
 import React from "react";
 import styles from "./Score.module.scss";
-import { Cell, Label, Pie, PieChart, ResponsiveContainer } from "recharts";
-
-const CustomLabel = (props) => {
-  console.log(props.value);
-  return (
-    <p className={styles.Score__count}>
-      <span className={styles.Score__percentage}>{`${
-        props.value * 100
-      } %`}</span>
-      <span className={styles.Score__span}>de votre objectif</span>
-    </p>
-  );
-};
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { handleError } from "../../../../services/data";
 
 const Score = (props) => {
+  if(props.score.error) {
+    return handleError()
+  }
+  
   const data = [
     {
       name: "score",

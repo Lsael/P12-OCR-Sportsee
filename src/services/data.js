@@ -11,7 +11,8 @@ const getUserInfos = (userId) => {
     .then((data) => {
       return data.data.userInfos;
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      return({error:error})});
     
   return datas;
 };
@@ -22,7 +23,8 @@ const getUserScore = (userId) => {
     .then((data) => {
       return data.data.todayScore || data.data.score;
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      return({error:error})});
 
   return datas;
 };
@@ -33,7 +35,8 @@ const getUserResume = (userId) => {
     .then((data) => {
       return data.data.keyData;
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      return({error:error})});
 
   return datas;
 };
@@ -56,7 +59,8 @@ const getUserActivity = (userId) => {
 
       return formattedDatas;
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      return({error:error})});
 
     return datas;
 };
@@ -69,7 +73,8 @@ const getUserAverageSessions = (userId) => {
         return e.sessionLength;
       });
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      return({error:error})});
 
   return datas;
 };
@@ -92,10 +97,19 @@ const getUserPerformance = (userId) => {
 
       return sortedPerfDatas
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      return({error:error})});
 
   return datas;
 };
+
+const handleError = () => {
+  return(
+    <div className="graph-error graph">
+      <span>Une erreur est survenue, veuillez reessayer plus tard</span>
+    </div>
+  )
+}
 
 export {
   getUserInfos,
@@ -104,4 +118,5 @@ export {
   getUserActivity,
   getUserAverageSessions,
   getUserPerformance,
+  handleError
 };
