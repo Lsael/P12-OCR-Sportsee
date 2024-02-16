@@ -66,7 +66,7 @@ const AverageSession = (props) => {
             axisLine={false}
             tickLine={false}
             tickMargin={20}
-            tick={{ fill: "white" }}
+            tick={{ fill: "rgba(255, 255, 255, 0.7)" }}
             padding={{ right: 5, left: 5 }}
           />
           <Tooltip
