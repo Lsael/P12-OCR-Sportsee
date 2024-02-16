@@ -20,7 +20,7 @@ const getUserScore = (userId) => {
   const datas = fetchUserInfos(userId)
     .then((res) => res.json())
     .then((data) => {
-      return data.data.todayScore;
+      return data.data.todayScore || data.data.score;
     })
     .catch(error => console.error(error));
 
