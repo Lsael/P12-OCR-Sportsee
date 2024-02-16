@@ -14,6 +14,7 @@ const Intensity = (props) => {
   if (props.intensity.error) {
     return handleError();
   }
+  
   const data = props.intensity;
 
   return (
