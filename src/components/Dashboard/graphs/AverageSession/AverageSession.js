@@ -7,8 +7,7 @@ import {
   Rectangle,
   ResponsiveContainer,
   Tooltip,
-  XAxis,
-  YAxis,
+  XAxis
 } from "recharts";
 import { handleError } from "../../../../services/data";
 

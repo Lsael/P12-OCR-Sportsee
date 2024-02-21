@@ -7,33 +7,28 @@ import DailyActivity from "./graphs/DailyActivity/DailyActivity.js";
 import AverageSession from "./graphs/AverageSession/AverageSession.js";
 import Intensity from "./graphs/Intensity/Intensity.js";
 import Score from "./graphs/Score/Score.js";
-import {
-  getUserActivity,
-  getUserAverageSessions,
-  getUserInfos,
-  getUserPerformance,
-  getUserResume,
-  getUserScore,
-} from "../../services/data.js";
+import { UserDatas } from "../../services/data.js";
 
 const Dashboard = () => {
   const userId = process.env.REACT_APP_USER_ID;
-
+  
   const [firstName, setFirstname] = useState("");
   const [dailyActivity, setDailyActivity] = useState({});
   const [averageSession, setAverageSession] = useState([]);
   const [intensity, setIntensity] = useState({});
   const [score, setScore] = useState({});
   const [resume, setResume] = useState({});
-
+  
   useEffect(() => {
-    getUserInfos(userId).then((res) => setFirstname(res.firstName));
-    getUserActivity(userId).then((res) => setDailyActivity(res));
-    getUserAverageSessions(userId).then((res) => setAverageSession(res));
-    getUserPerformance(userId).then((res) => setIntensity(res));
-    getUserScore(userId).then((res) => setScore(res));
-    getUserResume(userId).then((res) => setResume(res));
-  }, []);
+    const userDatas = new UserDatas(userId);
+
+    userDatas.getUserInfos().then((res) => setFirstname(res.firstName));
+    userDatas.getUserActivity().then((res) => setDailyActivity(res));
+    userDatas.getUserAverageSessions().then((res) => setAverageSession(res));
+    userDatas.getUserPerformance().then((res) => setIntensity(res));
+    userDatas.getUserScore().then((res) => setScore(res));
+    userDatas.getUserResume().then((res) => setResume(res));
+  }, [userId]);
 
   return (
     <Layout>
