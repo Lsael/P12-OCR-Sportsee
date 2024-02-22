@@ -31,7 +31,7 @@ const Score = (props) => {
   return (
     <div className={styles.Score}>
       <h3 className={styles.Score__title}>Score</h3>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer>
         <PieChart width={300} height={250}>
           <Pie
             data={data}
@@ -39,8 +39,8 @@ const Score = (props) => {
             dataKey="score"
             cx="50%"
             cy="50%"
-            outerRadius={80}
-            innerRadius={68}
+            outerRadius="60%"
+            innerRadius="50%"
             cornerRadius={50}
             startAngle={-270}
             stroke="#FBFBFB"
@@ -49,7 +49,7 @@ const Score = (props) => {
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Pie data={placeholder} dataKey="value" cx="50%" cy="50%" outerRadius={68} fill="white" />
+          <Pie data={placeholder} dataKey="value" cx="50%" cy="50%" outerRadius="50%" fill="white" />
         </PieChart>
         <p className={styles.Score__count}>
           <span className={styles.Score__percentage}>{`${

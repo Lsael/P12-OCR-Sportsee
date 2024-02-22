@@ -38,12 +38,10 @@ const DailyActivity = (props) => {
 
   return (
     <div className={`${styles.DailyActivity} graph`}>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="95%">
         <BarChart
-          width={850}
-          height={250}
           data={data}
-          barCategoryGap={30}
+          barCategoryGap="30%"
           barGap={16}
           margin={{ top: 10, right: 0, bottom: 20, left: 10 }}
         >

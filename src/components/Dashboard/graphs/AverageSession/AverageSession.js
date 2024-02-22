@@ -53,7 +53,7 @@ const AverageSession = (props) => {
 
   return (
     <div className={`${styles.AverageSession} graph`}>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer>
         <LineChart
           data={data}
           margin={{ top: 30, right: 0, left: 0, bottom: 30 }}

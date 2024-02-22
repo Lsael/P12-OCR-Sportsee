@@ -6,16 +6,25 @@
     background-color: $light-grey-generic;
     position: relative;
     padding: 24px 32px 16px;
+    @media screen and (max-width: 1100px) {
+        padding: 16px 16px 8px;
+    }
     &__head {
         display: flex;
         justify-content: space-between;
         align-items: center;
         h3 {
             font-size: 15px;
+            @media screen and (max-width: 1100px) {
+                font-size: 12px;
+            }
         }
         span {
             font-size: 14px;
-            color: #74798C ;
+            color: #74798C;
+            @media screen and (max-width: 1100px) {
+                font-size: 10px;
+            }
         }
     }
     &__legend {

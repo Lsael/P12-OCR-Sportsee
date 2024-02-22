@@ -19,8 +19,8 @@ const Intensity = (props) => {
 
   return (
     <div className={`${styles.Intensity} graph`}>
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius={70} data={data}>
+      <ResponsiveContainer>
+        <RadarChart cx="50%" cy="50%" outerRadius="50%" data={data}>
           <PolarGrid stroke="white" />
           <PolarAngleAxis dataKey="kind" stroke="white" tickLine={false} fontSize={12} />
           <PolarRadiusAxis angle={30} domain={[0, 200]} tick={false}/>
