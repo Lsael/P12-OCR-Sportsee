@@ -17,27 +17,6 @@ export class UserDatas {
     this.userId = userId;
   }
 
-  /* const getUserInfos = async (userId) => {
-  if(process.env.REACT_APP_ENV === "dev") {
-    const index = USER_MAIN_DATA.findIndex((e) => e.id == userId)
-    if(index === -1) {
-      return {error: true}
-    } else {
-      return USER_MAIN_DATA[index].userInfos
-    }
-  } else if(process.env.REACT_APP_ENV === "prod") {
-    const datas = fetchUserInfos(userId)
-      .then((res) => res.json())
-      .then((data) => {
-        return data.data.userInfos;
-      })
-      .catch(error => {
-        return({error:error})});
-      
-    return datas;
-  }
-}; */
-
   async getUserInfos() {
     if (process.env.REACT_APP_ENV === "dev") {
       const index = USER_MAIN_DATA.findIndex(
