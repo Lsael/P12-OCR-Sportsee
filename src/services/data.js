@@ -165,6 +165,23 @@ export class UserDatas {
     }
   }
 
+  translateKind(kind) {
+    switch(kind) {
+      case "cardio":
+        return "Cardio";
+      case "energy":
+        return "Energie"
+      case "endurance":
+        return "Endurance"
+      case "strength":
+        return "Force"
+      case "speed":
+        return "Vitesse"
+      case "intensity":
+        return "Intensité"
+    }
+  }
+
   async getUserPerformance() {
     if (process.env.REACT_APP_ENV === "dev") {
       const index = USER_PERFORMANCE.findIndex(
@@ -173,7 +190,7 @@ export class UserDatas {
       if (index !== -1) {
         let kinds = Object.keys(USER_PERFORMANCE[index].kind).map((e) => {
           return (
-            USER_PERFORMANCE[index].kind[e][0].toUpperCase() + USER_PERFORMANCE[index].kind[e].slice(1)
+           this.translateKind(USER_PERFORMANCE[index].kind[e]) 
           );
         });
 
@@ -194,7 +211,7 @@ export class UserDatas {
       .then((data) => {
         let kinds = Object.keys(data.data.kind).map((e) => {
           return (
-            data.data.kind[e][0].toUpperCase() + data.data.kind[e].slice(1)
+            this.translateKind(data.data.kind[e])
           );
         });
 
